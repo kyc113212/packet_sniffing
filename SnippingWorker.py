@@ -53,6 +53,7 @@ class SnippingWorker(QThread):
         self.filter = 'tcp port 80'
         sniffing(self.filter, 0)
 
+# TODO : 정지를 sniff에서 해결하는게 아니고 QThread에서 하는 것은?
     def pause(self):
         self.filter = 'tcp port 80'
         sniffing(self.filter, 1)

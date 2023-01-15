@@ -29,14 +29,17 @@ class MyWindow(QMainWindow):
         self.label.setFont(font1)
         self.label.adjustSize()
 
-        btn1 = QPushButton("resume", self)
-        btn1.move(10, 100)
-        btn2 = QPushButton("pause", self)
-        btn2.move(10, 150)
+        resumeBtn = QPushButton("resume", self)
+        resumeBtn.move(10, 100)
+        pauseBtn = QPushButton("pause", self)
+        pauseBtn.move(10, 150)
+        saveBtn = QPushButton("save", self)
+        saveBtn.move(10, 200)
 
         # 시그널-슬롯 연결하기
-        btn1.clicked.connect(self.resume)
-        btn2.clicked.connect(self.pause)
+        resumeBtn.clicked.connect(self.resume)
+        pauseBtn.clicked.connect(self.pause)
+        saveBtn.clicked.connect(self.save)
 
     @pyqtSlot(bool)
     def running_check(self, running):
@@ -54,3 +57,6 @@ class MyWindow(QMainWindow):
         self.uiWorker.pause()
         self.snippingWorker.pause()
         self.label.setText('정지 중 입니다')
+
+    def save(self):
+        self.label.setText('저장 합니다')
